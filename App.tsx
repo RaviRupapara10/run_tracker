@@ -20,7 +20,7 @@ const MyLightTheme: MyTheme = {
     colors: {
         ...DefaultTheme.colors,
         primary: '#F65626',
-        background: '#E5E5E5',
+        background: '#ffffff',
         card: 'rgb(255, 255, 255)',
         text: 'rgb(28, 28, 30)',
         border: 'rgb(216, 216, 216)',
@@ -67,21 +67,21 @@ function App() {
 
 
     return (
-        <SafeAreaProvider>
-            <NavigationContainer
-                theme={(scheme === 'dark' ? MyDarkTheme : MyLightTheme) as any} >
+        // <SafeAreaProvider>
+        <NavigationContainer
+            theme={(scheme === 'dark' ? MyDarkTheme : MyLightTheme) as any} >
 
 
-                <Stack.Navigator initialRouteName='SelectGender' >
-                    <Stack.Group screenOptions={{ headerShown: false }} >
-                        <Stack.Screen name="Home" component={HomeScreen} />
-                        <Stack.Screen name="SelectGender" component={SelectGender} />
-                        <Stack.Screen name="MyProfile" component={MyProfile} options={{ animationTypeForReplace: 'push', animation: 'slide_from_right' }} />
-                        <Stack.Screen name="SelectPlan" component={SelectPlan} options={{ animationTypeForReplace: 'push', animation: 'slide_from_right' }} />
-                    </Stack.Group>
-                </Stack.Navigator>
-            </NavigationContainer>
-        </SafeAreaProvider>
+            <Stack.Navigator initialRouteName='SelectGender' >
+                <Stack.Group screenOptions={{ headerShown: false }} >
+                    <Stack.Screen name="Home" component={HomeScreen} />
+                    <Stack.Screen name="SelectGender" component={SelectGender} />
+                    <Stack.Screen name="MyProfile" component={MyProfile} options={{ animationTypeForReplace: 'push', animation: 'slide_from_right' }} />
+                    <Stack.Screen name="SelectPlan" component={SelectPlan} options={{ animationTypeForReplace: 'push', animation: 'slide_from_right' }} />
+                </Stack.Group>
+            </Stack.Navigator>
+        </NavigationContainer>
+        // {/* </SafeAreaProvider> */ }
     );
 }
 

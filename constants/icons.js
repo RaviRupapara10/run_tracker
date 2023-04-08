@@ -12,8 +12,10 @@
 // export const pin = require("../assets/icons/pin.png");
 // export const sports_icon = require("../assets/icons/sports_icon.png");
 // export const up_arrow = require("../assets/icons/up_arrow.png");
+export const ligting = require("../assets/icons/flash.png")
 
 export default {
+    ligting,
     // baby_car,
     // back_arrow,
     // calendar,

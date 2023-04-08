@@ -1,17 +1,38 @@
 import { Pressable, StatusBar, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native'
-import React from 'react'
+import React, { useCallback, useMemo, useRef, useState } from 'react'
 import { useTheme } from '../../Common/Theme/ThemeType';
 import LinearGradient from 'react-native-linear-gradient';
 import { FONTS, SIZES } from '../../../constants';
 
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import BottomScreen from '../../Common/Componants/BottomScreen';
+import { SectionsWheelPicker } from 'react-native-ui-lib';
+type BottomSheetComponentProps = {};
+
 const MyProfile = (props: any) => {
     const { colors } = useTheme();
+    const [hSheet, sethSheet] = useState<boolean>(false)
+    const [wSheet, setwSheet] = useState<boolean>(false)
 
 
+
+    const handleHeight = () => {
+        sethSheet(true)
+
+
+
+    }
+    const handleWight = () => {
+        if (wSheet == true) {
+            setwSheet(!wSheet)
+        }
+        setwSheet(true)
+    }
 
 
 
     function topBars() {
+
         return (
             <View style={{ flexDirection: 'row', marginTop: SIZES.padding2, }}>
                 <LinearGradient
@@ -50,10 +71,16 @@ const MyProfile = (props: any) => {
         )
     }
 
-    function SelectHeight() {
+    function SelectHeightAndWeight() {
+
+
+
+
         return (
 
             <View>
+
+
                 <View style={{ marginVertical: 10 }}>
                     <View style={{
                         paddingHorizontal: 20,
@@ -61,13 +88,16 @@ const MyProfile = (props: any) => {
                         flexDirection: 'row',
                         justifyContent: 'space-evenly',
                         alignItems: 'center',
+
                     }}>
                         <Text style={{
-                            color: colors.grayText, ...FONTS.body3
+                            color: colors.grayText, ...FONTS.h3
                         }}>
                             Height
                         </Text>
-                        <Pressable>
+                        <Pressable
+                            onPress={handleHeight}
+                        >
                             <View style={{
                                 height: 60, width: 200,
                                 borderRadius: 15,
@@ -106,12 +136,14 @@ const MyProfile = (props: any) => {
                         alignItems: 'center',
                     }}>
                         <Text style={{
-                            color: colors.grayText, ...FONTS.body3
+                            color: colors.grayText, ...FONTS.h3
                         }}>
                             Weight
                         </Text>
 
-                        <Pressable>
+                        <Pressable
+                            onPress={handleWight}
+                        >
                             <View style={{
                                 height: 60, width: 200,
                                 borderRadius: 15,
@@ -140,10 +172,15 @@ const MyProfile = (props: any) => {
                             </View>
                         </Pressable>
                     </View>
+
                 </View>
+
+
+
             </View>
         )
     }
+
 
 
 
@@ -178,33 +215,124 @@ const MyProfile = (props: any) => {
         )
     }
 
-    return (
-        <View style={{ flex: 1, backgroundColor: colors.background, alignItems: 'center', width: SIZES.width, paddingHorizontal: 20 }}>
-            <StatusBar barStyle="dark-content" backgroundColor={colors.background} />
-            <View>
-                {topBars()}
-            </View>
-            <View style={{ marginTop: 100 }}>
-                {selectGenderText()}
-            </View>
-            <View style={{ marginTop: 120 }}>
-                {SelectHeight()}
+    const heightSheet = () => {
 
+
+        const data = [{
+            itemHeight: 10,
+            numberOfVisibleRows: 1,
+            activeTextColor: 'green',
+            inactiveTextColor: 'lightblue'
+        } ]
+        return (
+            <BottomScreen height={50} handleState={sethSheet}>
+                <Text>hellow</Text>
+                {/* <SectionsWheelPicker sections={data} /> */}
+            </BottomScreen>
+        )
+    }
+
+
+    const weightSheet = () => {
+        return (
+            <BottomScreen height={50} handleState={setwSheet} >
+                <Text>hellow</Text>
+                <Text>hellow</Text>
+                <Text>hellow</Text>
+                <Text>hellow</Text>
+                <Text>hellow</Text>
+            </BottomScreen>
+        )
+    }
+
+
+    return (
+        <GestureHandlerRootView>
+            <View style={{ backgroundColor: colors.background, }}>
+                <View style={{ alignItems: 'center', paddingHorizontal: 20, height: '100%' }}>
+                    <StatusBar barStyle="dark-content" />
+                    <View>
+                        {topBars()}
+                    </View>
+                    <View style={{ marginTop: 100 }}>
+                        {selectGenderText()}
+                    </View>
+                    <View style={{ marginTop: 120 }}>
+                        {SelectHeightAndWeight()}
+                    </View>
+                    <View style={{ bottom: 0, position: 'absolute', paddingBottom: 30 }}>
+                        {nextstexpButton()}
+                    </View>
+
+                </View>
+
+                {hSheet && heightSheet()}
+                {wSheet && weightSheet()}
             </View>
-            <View style={{ bottom: 0, position: 'absolute', paddingBottom: 30 }}>
-                {nextstexpButton()}
-            </View>
-        </View>
+        </GestureHandlerRootView>
+
+
+
+
+
+
     )
 }
 
 export default MyProfile
 
 const styles = StyleSheet.create({
+
     topBar: {
         width: 62,
         height: 6,
         borderRadius: 3,
         marginHorizontal: 5,
-    }
+    },
+
+    modalView: {
+        borderRadius: 20,
+        padding: 35,
+        alignItems: 'center',
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 10,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 10,
+        bottom: 0,
+        left: 0,
+        right: 0,
+        position: 'absolute',
+
+    },
+    button: {
+        borderRadius: 20,
+        padding: 10,
+        elevation: 2,
+    },
+    buttonOpen: {
+        backgroundColor: '#F194FF',
+    },
+    buttonClose: {
+        backgroundColor: '#2196F3',
+    },
+    textStyle: {
+        color: 'white',
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+    modalText: {
+        marginBottom: 15,
+        textAlign: 'center',
+    },
+    centeredView: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        // marginTop: 10,
+        // backgroundColor: 'rgba(0, 0, 0,0.3)'
+    },
 })
