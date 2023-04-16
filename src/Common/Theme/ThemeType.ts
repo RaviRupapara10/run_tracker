@@ -1,7 +1,6 @@
 import { useTheme as _useTheme } from '@react-navigation/native';
 
 export type MyTheme = {
-    dark: boolean;
     colors: {
         primary?: string;
         background?: string;
@@ -14,7 +13,10 @@ export type MyTheme = {
         gray2?: string;
         white?: string;
         grade1?: string,
-        grade2?: string,
+        grade2?: string;
+        gray1?: string;
+        cardColor?: string;
+
 
     };
 }

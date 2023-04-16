@@ -1,16 +1,19 @@
 import { Pressable, StatusBar, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native'
 import React, { useCallback, useMemo, useRef, useState } from 'react'
-import { useTheme } from '../../Common/Theme/ThemeType';
 import LinearGradient from 'react-native-linear-gradient';
 import { FONTS, SIZES } from '../../../constants';
 
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import BottomScreen from '../../Common/Componants/BottomScreen';
-import { SectionsWheelPicker } from 'react-native-ui-lib';
+// import { SectionsWheelPicker, WheelPickerProps } from 'react-native-ui-lib';
+import WheelPicker from '../../Common/Componants/Picker';
+import { useTheme } from '../../Common/Theme/ThemeType';
 type BottomSheetComponentProps = {};
 
 const MyProfile = (props: any) => {
     const { colors } = useTheme();
+
+    
     const [hSheet, sethSheet] = useState<boolean>(false)
     const [wSheet, setwSheet] = useState<boolean>(false)
 
@@ -216,18 +219,17 @@ const MyProfile = (props: any) => {
     }
 
     const heightSheet = () => {
+        // const [selected, setSelected] = useState(0)
+        const changeIndex = (index: number) => {
+            console.log(index);
+        };
 
-
-        const data = [{
-            itemHeight: 10,
-            numberOfVisibleRows: 1,
-            activeTextColor: 'green',
-            inactiveTextColor: 'lightblue'
-        } ]
+        const data = ['Hello1', 'Hello2', 'Hello3', 'Hello4', 'Hello5'];
         return (
             <BottomScreen height={50} handleState={sethSheet}>
                 <Text>hellow</Text>
                 {/* <SectionsWheelPicker sections={data} /> */}
+                <WheelPicker selectedIndex={0} options={data} onChange={changeIndex} />
             </BottomScreen>
         )
     }
@@ -270,12 +272,6 @@ const MyProfile = (props: any) => {
                 {wSheet && weightSheet()}
             </View>
         </GestureHandlerRootView>
-
-
-
-
-
-
     )
 }
 

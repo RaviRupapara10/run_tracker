@@ -12,10 +12,27 @@
 // export const pin = require("../assets/icons/pin.png");
 // export const sports_icon = require("../assets/icons/sports_icon.png");
 // export const up_arrow = require("../assets/icons/up_arrow.png");
+// export const ligting = require("../assets/icons/flash.png")
+export const HomeTab = require("../assets/icons/home.png")
 export const ligting = require("../assets/icons/flash.png")
+export const ChartTab = require("../assets/icons/Chart.png")
+export const UserTab = require("../assets/icons/user-square.png")
+export const calander = require("../assets/icons/calander.png")
+export const Right = require("../assets/icons/done_mark.png")
+export const Walk = require("../assets/icons/Walk.png")
+export const Run = require("../assets/icons/RunIcon.png")
+export const CloclTotal = require("../assets/icons/ClockTotal.png")
 
 export default {
     ligting,
+    HomeTab,
+    ChartTab,
+    UserTab,
+    calander,
+    Right,
+    Walk,
+    Run,
+    CloclTotal,
     // baby_car,
     // back_arrow,
     // calendar,

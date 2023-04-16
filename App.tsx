@@ -1,24 +1,22 @@
 // In App.js in a new project
 
 import * as React from 'react';
-import { View, Text, useColorScheme } from 'react-native';
-import { DefaultTheme, NavigationContainer, DarkTheme } from '@react-navigation/native';
+import { View, Text, useColorScheme, SafeAreaView, StatusBar } from 'react-native';
+import { NavigationContainer, } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { MyTheme } from './src/Common/Theme/ThemeType';
-import HomeScreen from './src/Screens/HomeScreen';
 import SelectGender from './src/Screens/OnboardingScreens/SelectGender';
 import MyProfile from './src/Screens/OnboardingScreens/MyProfile';
 import SelectPlan from './src/Screens/OnboardingScreens/SelectPlan';
+import TabNavigator from './src/Screens/TabScreens/TabNavigator';
 
 
 const Stack = createNativeStackNavigator();
 
 
 const MyLightTheme: MyTheme = {
-    ...DefaultTheme,
     colors: {
-        ...DefaultTheme.colors,
         primary: '#F65626',
         background: '#ffffff',
         card: 'rgb(255, 255, 255)',
@@ -31,14 +29,15 @@ const MyLightTheme: MyTheme = {
         white: '#ffffff',
         grade1: '#F65626',
         grade2: '#FE7234',
+        gray1: '#F8F8F8',
+        cardColor: '#1C1C1E',
+
     },
 };
 
 
 const MyDarkTheme: MyTheme = {
-    ...DarkTheme,
     colors: {
-        ...DarkTheme.colors,
         primary: '#F65626',
         background: 'rgb(1, 1, 1)',
         card: 'rgb(18, 18, 18)',
@@ -51,6 +50,9 @@ const MyDarkTheme: MyTheme = {
         white: '#ffffff',
         grade1: '#F65626',
         grade2: '#FE7234',
+        gray1: '#F8F8F8',
+        cardColor: '#1C1C1E',
+
 
 
     },
@@ -67,21 +69,23 @@ function App() {
 
 
     return (
-        // <SafeAreaProvider>
-        <NavigationContainer
-            theme={(scheme === 'dark' ? MyDarkTheme : MyLightTheme) as any} >
+        <SafeAreaView style={{ flex: 1 }}>
+            <StatusBar backgroundColor={'transparent'} />
+            <NavigationContainer
+                theme={(scheme === 'dark' ? MyDarkTheme : MyLightTheme) as any} >
+                <Stack.Navigator initialRouteName='TabNavigator' >
+                    <Stack.Group screenOptions={{ headerShown: false }} >
+                        <Stack.Screen name="SelectGender" component={SelectGender} />
+                        <Stack.Screen name="MyProfile" component={MyProfile} options={{ animationTypeForReplace: 'push', animation: 'slide_from_right' }} />
+                        <Stack.Screen name="SelectPlan" component={SelectPlan} options={{ animationTypeForReplace: 'push', animation: 'slide_from_right' }} />
+                        <Stack.Screen name="TabNavigator" component={TabNavigator} />
+                    </Stack.Group>
+                    <Stack.Group>
 
-
-            <Stack.Navigator initialRouteName='SelectGender' >
-                <Stack.Group screenOptions={{ headerShown: false }} >
-                    <Stack.Screen name="Home" component={HomeScreen} />
-                    <Stack.Screen name="SelectGender" component={SelectGender} />
-                    <Stack.Screen name="MyProfile" component={MyProfile} options={{ animationTypeForReplace: 'push', animation: 'slide_from_right' }} />
-                    <Stack.Screen name="SelectPlan" component={SelectPlan} options={{ animationTypeForReplace: 'push', animation: 'slide_from_right' }} />
-                </Stack.Group>
-            </Stack.Navigator>
-        </NavigationContainer>
-        // {/* </SafeAreaProvider> */ }
+                    </Stack.Group>
+                </Stack.Navigator>
+            </NavigationContainer>
+        </SafeAreaView>
     );
 }
 

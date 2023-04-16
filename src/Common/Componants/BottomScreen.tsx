@@ -45,18 +45,18 @@ const BottomScreen = (props: any) => {
       {/* <StatusBar backgroundColor={'gray'} /> */}
 
 
-
       <BottomSheet
         ref={bottomSheetRef}
         index={0}
         snapPoints={snapPoints}
         onChange={handleSheetChanges}
         enablePanDownToClose={true}
-        enableHandlePanningGesture={true}
-        enableOverDrag={true}
+        // enableHandlePanningGesture={true}
         backdropComponent={renderBackdrop}
 
+
       >
+
         <View style={styles.contentContainer}>
           <Text>Awesome 🎉</Text>
           {props.children}
