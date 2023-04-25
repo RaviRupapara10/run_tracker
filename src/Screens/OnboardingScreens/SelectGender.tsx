@@ -1,4 +1,4 @@
-import { Image, StatusBar, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native'
+import { Image, StatusBar,SafeAreaView, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native'
 import React, { useState } from 'react'
 import { FONTS, SIZES, } from '../../../constants';
 import LinearGradient from 'react-native-linear-gradient';
@@ -147,8 +147,8 @@ const SelectGender = (props: any) => {
     }
 
     return (
-        <View style={{ flex: 1, backgroundColor: colors.background, alignItems: 'center', width: SIZES.width, }}>
-            <StatusBar barStyle="dark-content" backgroundColor={colors.background} />
+        <SafeAreaView style={{ flex: 1, backgroundColor: colors.background, alignItems: 'center', width: SIZES.width, }}>
+            {/* <StatusBar translucent barStyle="dark-content" backgroundColor={'transparent'} /> */}
             <View>
                 {topBars()}
             </View>
@@ -162,7 +162,7 @@ const SelectGender = (props: any) => {
             <View style={{ bottom: 0, position: 'absolute', paddingBottom: 30 }}>
                 {nextstexpButton()}
             </View>
-        </View>
+        </SafeAreaView>
     )
 }
 

@@ -1,17 +1,48 @@
-import { FlatList, Image, StyleSheet, Text, View } from 'react-native'
-import React, { useCallback, useState } from 'react'
+import { Animated, Dimensions, FlatList, Image, Platform, StyleSheet, Text, View } from 'react-native'
+import React, { useCallback, useRef, useState } from 'react'
 import { useTheme } from "../../Common/Theme/ThemeType";
 import LinearGradient from 'react-native-linear-gradient';
 import { CloclTotal, Run, Walk } from '../../../constants/icons';
-import { FONTS } from '../../../constants';
+import { FONTS, SIZES } from '../../../constants';
+
+
+const { width, height } = Dimensions.get('window');
 
 
 const HomeSwiper = () => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const { colors } = useTheme();
 
+  const SPACING = 10;
+  const ITEM_SIZE = Platform.OS === 'ios' ? width * 0.72 : width * 0.74;
+  const EMPTY_ITEM_SIZE = (width - ITEM_SIZE) / 2;
+  const BACKDROP_HEIGHT = height * 0.65;
 
   const Data = [
+    {
+      week: 1,
+      Day: 1,
+      walkTime: '14:00',
+      RunTime: '14:00',
+      TotalTime: '14:00',
+      isCompleted: false,
+    },
+    {
+      week: 1,
+      Day: 1,
+      walkTime: '14:00',
+      RunTime: '14:00',
+      TotalTime: '14:00',
+      isCompleted: false,
+    },
+    {
+      week: 1,
+      Day: 1,
+      walkTime: '14:00',
+      RunTime: '14:00',
+      TotalTime: '14:00',
+      isCompleted: false,
+    },
     {
       week: 1,
       Day: 1,
@@ -190,139 +221,176 @@ const HomeSwiper = () => {
   //     // </View>
   // )
   //     , []);
-
+  const scrollX = useRef(new Animated.Value(0)).current;
 
 
   return (
-    <View
-    // style={{
-    //   alignItems: 'center',
-    //   height: 350,
-    //   justifyContent: 'center',
-    //   backgroundColor: 'green',
-    //   alignSelf: 'center',
-    // }}
-    >
-      <FlatList
+    <View style={{
+    }}>
+
+      <Animated.FlatList
         data={Data}
         horizontal
         pagingEnabled
-        alwaysBounceHorizontal={true}
+        snapToInterval={ITEM_SIZE}
         snapToAlignment='center'
-        bouncesZoom
-        
+        bounces={false}
+         decelerationRate={3}
+        scrollEventThrottle={16}
+        onScroll={Animated.event(
+          [{ nativeEvent: { contentOffset: { x: scrollX } } }],
+          { useNativeDriver: true }
+        )}
         renderItem={({ item, index }) => {
+
+          const inputRange = [
+            (index - 1) * ITEM_SIZE,
+            index * ITEM_SIZE,
+            (index + 1) * ITEM_SIZE,
+          ];
+
+          const translateY = scrollX.interpolate({
+            inputRange,
+            outputRange: [50, 10, 50],
+            extrapolate: 'clamp',
+          });
+
+          const opaacityY = scrollX.interpolate({
+            inputRange,
+            outputRange: [0.8, 1, 0.8],
+            extrapolate: 'clamp',
+          });
+
           return (
-            <View style={{ height: 350, }} key={index} >
-              <View style={{
-                height: 283,
-                width: 269,
-                borderRadius: 30,
-                backgroundColor: colors.gray1,
-                borderWidth: 2,
-                borderColor: colors.gray2,
-                padding: 20,
-                margin: 20,
-                marginTop: 40,
-                alignItems: 'center',
-
-
-              }}
-              >
-                <View
-                  style={{
-                    padding: 5,
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
+            <View style={{ width: ITEM_SIZE, height: 200 }} >
+              <Animated.View style={{
+                transform: [{ translateY }],
+                opacity: opaacityY
+              }}>
+                <View style={{
+                  height: 283,
+                  borderRadius: 30,
+                  backgroundColor: colors.gray1,
+                  borderWidth: 2,
+                  borderColor: colors.gray2,
+                  padding: 20,
+                  margin: 10,
+                  marginTop: 40,
+                  alignItems: 'center',
+                }}
                 >
-                  <Text
+                  <View
                     style={{
-                      fontSize: 64,
-                      fontFamily: "BebasNeue-Regular",
-                      fontWeight: "800",
-                      color: colors.cardColor,
-                      letterSpacing: -5,
-                      textTransform: "uppercase",
+                      padding: 5,
+                      alignItems: "center",
+                      justifyContent: "center",
                     }}
                   >
-                    DAY 1
-                  </Text>
-                </View>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    justifyContent: "space-around",
-                    width: 250
-                  }}
-                >
-                  <View style={{ alignItems: "center" }}>
-                    <LinearGradient
-                      locations={[0.0, 1.0]}
-                      colors={[`${colors.grade1}`, `${colors.grade2}`]}
+                    <Text
                       style={{
-                        height: 40,
-                        width: 40,
-                        borderRadius: 20,
-                        alignItems: "center",
-                        justifyContent: "center",
+                        fontSize: 64,
+                        fontFamily: "BebasNeue-Regular",
+                        fontWeight: "800",
+                        color: colors.cardColor,
+                        letterSpacing: -5,
+                        textTransform: "uppercase",
                       }}
                     >
-                      <Image
-                        source={Run}
-                        style={{ height: 20, width: 15, tintColor: "while" }}
-                      />
-                    </LinearGradient>
-                    <Text style={[styles.whiperText, { color: colors.cardColor }]}>
-                      14:00
+                      DAY 1
                     </Text>
-                    <Text style={{ ...FONTS.body3 }}>walk</Text>
                   </View>
-                  <View style={{ alignItems: "center" }}>
-                    <LinearGradient
-                      locations={[0.0, 1.0]}
-                      colors={[`${colors.grade1}`, `${colors.grade2}`]}
-                      style={{
-                        height: 40,
-                        width: 40,
-                        borderRadius: 20,
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <Image
-                        source={Walk}
-                        style={{ height: 20, width: 10, tintColor: "while" }}
-                      />
-                    </LinearGradient>
-                    <Text style={[styles.whiperText, { color: colors.cardColor }]}>
-                      14:00
-                    </Text>
-                    <Text style={{ ...FONTS.body3 }}>Run</Text>
-                  </View>
-                  <View style={{ alignItems: "center" }}>
-                    <View
-                      style={{
-                        height: 40,
-                        width: 40,
-                        borderRadius: 20,
-                        alignItems: "center",
-                        justifyContent: "center",
-                        backgroundColor: colors.grayText,
-                      }}
-                    >
-                      <Image
-                        source={CloclTotal}
-                        style={{ height: 20, width: 18, tintColor: "while" }}
-                      />
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      justifyContent: "space-around",
+                      width: 250
+                    }}
+                  >
+                    <View style={{ alignItems: "center" }}>
+                      <LinearGradient
+                        locations={[0.0, 1.0]}
+                        colors={[`${colors.grade1}`, `${colors.grade2}`]}
+                        style={{
+                          height: 40,
+                          width: 40,
+                          borderRadius: 20,
+                          alignItems: "center",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <Image
+                          source={Run}
+                          style={{ height: 20, width: 15, tintColor: "while" }}
+                        />
+                      </LinearGradient>
+                      <Text style={[styles.whiperText, { color: colors.cardColor }]}>
+                        14:00
+                      </Text>
+                      <Text style={{ ...FONTS.body3 }}>walk</Text>
                     </View>
-                    <Text style={[styles.whiperText, { color: colors.cardColor }]}>
-                      14:00
-                    </Text>
-                    <Text style={{ ...FONTS.body3 }}>Total</Text>
+                    <View style={{ alignItems: "center" }}>
+                      <LinearGradient
+                        locations={[0.0, 1.0]}
+                        colors={[`${colors.grade1}`, `${colors.grade2}`]}
+                        style={{
+                          height: 40,
+                          width: 40,
+                          borderRadius: 20,
+                          alignItems: "center",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <Image
+                          source={Walk}
+                          style={{ height: 20, width: 10, tintColor: "while" }}
+                        />
+                      </LinearGradient>
+                      <Text style={[styles.whiperText, { color: colors.cardColor }]}>
+                        14:00
+                      </Text>
+                      <Text style={{ ...FONTS.body3 }}>Run</Text>
+                    </View>
+                    <View style={{ alignItems: "center" }}>
+                      <View
+                        style={{
+                          height: 40,
+                          width: 40,
+                          borderRadius: 20,
+                          alignItems: "center",
+                          justifyContent: "center",
+                          backgroundColor: colors.grayText,
+                        }}
+                      >
+                        <Image
+                          source={CloclTotal}
+                          style={{ height: 20, width: 18, tintColor: "while" }}
+                        />
+                      </View>
+                      <Text style={[styles.whiperText, { color: colors.cardColor }]}>
+                        14:00
+                      </Text>
+                      <Text style={{ ...FONTS.body3 }}>Total</Text>
+                    </View>
+                  </View>
+                  <View style={{ alignSelf: "center", margin: 20 }}>
+                    <LinearGradient
+                      locations={[0.0, 1.0]}
+                      colors={[`${colors.grade1}`, `${colors.grade2}`]}
+                      style={{
+                        height: 44,
+                        width: 117,
+                        borderRadius: 22,
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <Text style={{ color: colors.background, ...FONTS.body3 }}>
+                        Start
+                      </Text>
+                    </LinearGradient>
                   </View>
                 </View>
-                <View style={{ alignSelf: "center", margin: 20 }}>
+                <View style={{ position: "absolute", alignSelf: "center", top: 20 }}>
                   <LinearGradient
                     locations={[0.0, 1.0]}
                     colors={[`${colors.grade1}`, `${colors.grade2}`]}
@@ -334,36 +402,18 @@ const HomeSwiper = () => {
                       justifyContent: "center",
                     }}
                   >
-                    <Text style={{ color: colors.background, ...FONTS.body3 }}>
-                      Start
+                    <Text style={{ color: colors.background, ...FONTS.h2 }}>
+                      WEEK 2
                     </Text>
                   </LinearGradient>
                 </View>
-              </View>
-              <View style={{ position: "absolute", alignSelf: "center", top: 20 }}>
-                <LinearGradient
-                  locations={[0.0, 1.0]}
-                  colors={[`${colors.grade1}`, `${colors.grade2}`]}
-                  style={{
-                    height: 44,
-                    width: 117,
-                    borderRadius: 22,
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <Text style={{ color: colors.background, ...FONTS.h2 }}>
-                    WEEK 2
-                  </Text>
-                </LinearGradient>
-              </View>
+              </Animated.View>
             </View>
-
 
           )
         }}
       />
-    </View>
+    </View >
   )
 }
 

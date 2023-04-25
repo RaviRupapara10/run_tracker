@@ -1,27 +1,9 @@
 /* eslint-disable prettier/prettier */
 import { Dimensions } from 'react-native';
+import { View, Text, useColorScheme, SafeAreaView, StatusBar } from 'react-native';
+
 const { width, height } = Dimensions.get('window');
 
-// export const COLORS = {
-//     // base colors
-//     primary: '#F65626',
-//     gray2: '#F1F1F1',
-
-//     // colors
-//     // black: '#1E1F20',
-//     // white: '#FFFFFF',
-//     // lightGray: '#F5F7F9',
-//     // lightGray2: '#FAFBFD',
-//     // gray: '#BEC1D2',
-//     // blue: '#42B0FF',
-//     // darkgray: '#898C95',
-//     // yellow: '#FFD573',
-//     // lightBlue: '#95A9B8',
-//     // darkgreen: '#008159',
-//     // peach: '#FF615F',
-//     // purple: '#8e44ad',
-//     // red: '#FF0000',
-// };
 
 export const SIZES = {
     // global sizes
@@ -45,19 +27,24 @@ export const SIZES = {
     // app dimensions
     width,
     height
+     
 };
 
 export const FONTS = {
     largeTitle: { fontFamily: 'Roboto-Black', fontSize: SIZES.largeTitle, lineHeight: 55 },
-    h1: { fontFamily: 'Roboto-Black', fontSize: SIZES.h1, lineHeight: 3, },//use
-    h2: { fontFamily: 'Roboto-Black', fontSize: SIZES.h2, lineHeight: 30 },
-    h3: { fontFamily: 'Roboto-Black', fontSize: SIZES.h3, lineHeight: 20 },//use
-    h4: { fontFamily: 'Roboto-Black', fontSize: SIZES.h4, lineHeight: 22 },
-    body1: { fontFamily: 'Roboto', fontSize: SIZES.body1, lineHeight: 36 },
-    body2: { fontFamily: 'Roboto', fontSize: SIZES.body2, lineHeight: 30 },
-    body3: { fontFamily: 'Roboto', fontSize: SIZES.body3, lineHeight: 25 },
-    body4: { fontFamily: 'Roboto', fontSize: SIZES.body4, lineHeight: 22 },
+    h1: { fontFamily: 'Roboto-Black', fontSize: SIZES.h1,  },//use
+    h2: { fontFamily: 'Roboto-Black', fontSize: SIZES.h2, },
+    h3: { fontFamily: 'Roboto-Black', fontSize: SIZES.h3, },//use
+    h4: { fontFamily: 'Roboto-Black', fontSize: SIZES.h4, },
+    body1: { fontFamily: 'Roboto', fontSize: SIZES.body1, },
+    body2: { fontFamily: 'Roboto', fontSize: SIZES.body2 },
+    body3: { fontFamily: 'Roboto', fontSize: SIZES.body3, },
+    body4: { fontFamily: 'Roboto', fontSize: SIZES.body4, },
     HomeCard: { fontFamily: 'Roboto', fontSize: SIZES.body3, lineHeight: 20 },//home card
+    Bebas1: { fontFamily: 'BebasNeue', fontSize: SIZES.h1, },
+    Bebas2: { fontFamily: 'BebasNeue', fontSize: SIZES.h2, },
+    Bebas3: { fontFamily: 'BebasNeue', fontSize: SIZES.h3, },
+    Bebas4: { fontFamily: 'BebasNeue', fontSize: SIZES.h4, },
 };
 
 const appTheme = {

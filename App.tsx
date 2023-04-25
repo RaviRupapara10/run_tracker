@@ -1,10 +1,10 @@
 // In App.js in a new project
 
 import * as React from 'react';
-import { View, Text, useColorScheme, SafeAreaView, StatusBar } from 'react-native';
+import { View, Text, useColorScheme, StatusBar, SafeAreaView } from 'react-native';
 import { NavigationContainer, } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { SafeAreaProvider,  } from 'react-native-safe-area-context';
 import { MyTheme } from './src/Common/Theme/ThemeType';
 import SelectGender from './src/Screens/OnboardingScreens/SelectGender';
 import MyProfile from './src/Screens/OnboardingScreens/MyProfile';
@@ -69,23 +69,26 @@ function App() {
 
 
     return (
-        <SafeAreaView style={{ flex: 1 }}>
-            <StatusBar backgroundColor={'transparent'} />
-            <NavigationContainer
-                theme={(scheme === 'dark' ? MyDarkTheme : MyLightTheme) as any} >
-                <Stack.Navigator initialRouteName='TabNavigator' >
-                    <Stack.Group screenOptions={{ headerShown: false }} >
-                        <Stack.Screen name="SelectGender" component={SelectGender} />
-                        <Stack.Screen name="MyProfile" component={MyProfile} options={{ animationTypeForReplace: 'push', animation: 'slide_from_right' }} />
-                        <Stack.Screen name="SelectPlan" component={SelectPlan} options={{ animationTypeForReplace: 'push', animation: 'slide_from_right' }} />
-                        <Stack.Screen name="TabNavigator" component={TabNavigator} />
-                    </Stack.Group>
-                    <Stack.Group>
+        <>
+            <SafeAreaView style={{flex:1}}  >
+                <StatusBar backgroundColor={'transparent'} translucent />
+                <NavigationContainer
+                    theme={(scheme === 'dark' ? MyDarkTheme : MyLightTheme) as any} >
+                    <Stack.Navigator initialRouteName='TabNavigator' >
+                        <Stack.Group screenOptions={{ headerShown: false }} >
+                            <Stack.Screen name="SelectGender" component={SelectGender} />
+                            <Stack.Screen name="MyProfile" component={MyProfile} options={{ animationTypeForReplace: 'push', animation: 'slide_from_right' }} />
+                            <Stack.Screen name="SelectPlan" component={SelectPlan} options={{ animationTypeForReplace: 'push', animation: 'slide_from_right' }} />
+                            <Stack.Screen name="TabNavigator" component={TabNavigator} />
+                        </Stack.Group>
+                        <Stack.Group>
 
-                    </Stack.Group>
-                </Stack.Navigator>
-            </NavigationContainer>
-        </SafeAreaView>
+                        </Stack.Group>
+                    </Stack.Navigator>
+                </NavigationContainer>
+            </SafeAreaView>
+        </>
+
     );
 }
 

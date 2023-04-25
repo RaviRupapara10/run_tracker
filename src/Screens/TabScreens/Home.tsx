@@ -11,10 +11,7 @@ import React, { useState } from "react";
 import { FONTS, SIZES } from "../../../constants";
 import { useTheme } from "../../Common/Theme/ThemeType";
 import {
-  CloclTotal,
   Right,
-  Run,
-  Walk,
   calander,
 } from "../../../constants/icons";
 import MyBtn from "../../Common/MyBtn";
@@ -407,13 +404,12 @@ const Home = () => {
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.background }}>
-      <StatusBar backgroundColor={colors.background} />
+      <StatusBar backgroundColor={colors.background} translucent  barStyle={"dark-content"}/>
       <View style={{ padding: 20, alignSelf: "center", width: SIZES.width }}>
         <HomeHeader />
         <Weeks />
         <Days />
         <View style={{ marginTop: 60, alignItems: "center" }}>
-          {/* <DaySwiper /> */}
           <HomeSwiper />
         </View>
         <Text>Home</Text>
