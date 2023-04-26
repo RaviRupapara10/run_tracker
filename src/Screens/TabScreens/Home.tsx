@@ -412,11 +412,11 @@ const Home = () => {
         <View style={{ marginTop: 60, alignItems: "center" }}>
           <HomeSwiper />
         </View>
+        {/* <Text>Home</Text>
         <Text>Home</Text>
         <Text>Home</Text>
         <Text>Home</Text>
-        <Text>Home</Text>
-        <Text>Home</Text>
+        <Text>Home</Text> */}
       </View>
     </View>
   );

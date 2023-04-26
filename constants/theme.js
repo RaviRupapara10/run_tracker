@@ -15,14 +15,14 @@ export const SIZES = {
 
     // font sizes
     largeTitle: 50,
-    h1: 28,
-    h2: 22,
+    h1: 30,
+    h2: 24,
     h3: 18,
-    h4: 14,
+    h4: 15,
     body1: 30,
     body2: 20,
     body3: 18,
-    body4: 14,
+    body4: 15,
 
     // app dimensions
     width,
