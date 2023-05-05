@@ -92,6 +92,7 @@ const ReportTab = () => {
 				<SectionList
 					showsVerticalScrollIndicator={false}
 					sections={DATA}
+					
 					keyExtractor={(item, index) => item + index}
 					renderItem={({ item }) => (
 						<View>
@@ -136,7 +137,6 @@ const ReportTab = () => {
 			<View>
 				<ScreenHeader />
 				<ListItems />
-
 			</View>
 		</View>
 	)

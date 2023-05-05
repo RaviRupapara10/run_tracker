@@ -2,6 +2,14 @@
   "migIndex": 1,
   "data": [
     {
+      "path": "assets/fonts/BebasNeue-Regular.ttf",
+      "sha1": "8b3aaeb978f3cb5f575860774b50c332338563c1"
+    },
+    {
+      "path": "assets/fonts/BebasNeue.ttf",
+      "sha1": "8b3aaeb978f3cb5f575860774b50c332338563c1"
+    },
+    {
       "path": "assets/fonts/Roboto-Black.ttf",
       "sha1": "14701060227dbc4a4ec9901970e8a58bb136efd9"
     },

@@ -1,9 +1,10 @@
 import { Animated, Dimensions, FlatList, Image, Platform, StyleSheet, Text, View } from 'react-native'
 import React, { useCallback, useRef, useState } from 'react'
 import { useTheme } from "../../Common/Theme/ThemeType";
-import LinearGradient from 'react-native-linear-gradient';
+// import LinearGradient from 'react-native-linear-gradient';
 import { CloclTotal, Run, Walk } from '../../../constants/icons';
 import { FONTS, SIZES } from '../../../constants';
+import LinearGradient from 'react-native-linear-gradient';
 
 
 const { width, height } = Dimensions.get('window');
@@ -235,7 +236,7 @@ const HomeSwiper = () => {
         snapToInterval={ITEM_SIZE}
         snapToAlignment='center'
         bounces={false}
-         decelerationRate={3}
+        decelerationRate={3}
         scrollEventThrottle={16}
         onScroll={Animated.event(
           [{ nativeEvent: { contentOffset: { x: scrollX } } }],
@@ -262,26 +263,31 @@ const HomeSwiper = () => {
           });
 
           return (
-            <View style={{ width: ITEM_SIZE, height: 200 }} >
+            <View style={{
+              width: ITEM_SIZE,
+               height: 400, 
+              //  backgroundColor: 'red',
+              justifyContent: 'center'
+            }} >
               <Animated.View style={{
                 transform: [{ translateY }],
                 opacity: opaacityY
               }}>
                 <View style={{
-                  height: 283,
+                  height: 330,
                   borderRadius: 30,
                   backgroundColor: colors.gray1,
                   borderWidth: 2,
                   borderColor: colors.gray2,
-                  padding: 20,
-                  margin: 10,
-                  marginTop: 40,
+                  // padding: 20,
+                  margin: 5,
+                  // marginTop: 40,
                   alignItems: 'center',
                 }}
                 >
                   <View
                     style={{
-                      padding: 5,
+                      padding: 30,
                       alignItems: "center",
                       justifyContent: "center",
                     }}
@@ -289,11 +295,10 @@ const HomeSwiper = () => {
                     <Text
                       style={{
                         fontSize: 64,
-                        fontFamily: "BebasNeue-Regular",
-                        fontWeight: "800",
+                        fontFamily: "BebasNeue",
                         color: colors.cardColor,
-                        letterSpacing: -5,
                         textTransform: "uppercase",
+
                       }}
                     >
                       DAY 1
@@ -326,7 +331,7 @@ const HomeSwiper = () => {
                       <Text style={[styles.whiperText, { color: colors.cardColor }]}>
                         14:00
                       </Text>
-                      <Text style={{ ...FONTS.body3 }}>walk</Text>
+                      <Text style={{ ...FONTS.body4 }}>walk</Text>
                     </View>
                     <View style={{ alignItems: "center" }}>
                       <LinearGradient
@@ -348,7 +353,7 @@ const HomeSwiper = () => {
                       <Text style={[styles.whiperText, { color: colors.cardColor }]}>
                         14:00
                       </Text>
-                      <Text style={{ ...FONTS.body3 }}>Run</Text>
+                      <Text style={{ ...FONTS.body4 }}>Run</Text>
                     </View>
                     <View style={{ alignItems: "center" }}>
                       <View
@@ -369,16 +374,16 @@ const HomeSwiper = () => {
                       <Text style={[styles.whiperText, { color: colors.cardColor }]}>
                         14:00
                       </Text>
-                      <Text style={{ ...FONTS.body3 }}>Total</Text>
+                      <Text style={{ ...FONTS.body4 }}>Total</Text>
                     </View>
                   </View>
-                  <View style={{ alignSelf: "center", margin: 20 }}>
+                  <View style={{ alignSelf: "center", margin: 20,marginTop:50 }}>
                     <LinearGradient
                       locations={[0.0, 1.0]}
                       colors={[`${colors.grade1}`, `${colors.grade2}`]}
                       style={{
                         height: 44,
-                        width: 117,
+                        width: 200,
                         borderRadius: 22,
                         alignItems: "center",
                         justifyContent: "center",
@@ -390,7 +395,7 @@ const HomeSwiper = () => {
                     </LinearGradient>
                   </View>
                 </View>
-                <View style={{ position: "absolute", alignSelf: "center", top: 20 }}>
+                <View style={{ position: "absolute", alignSelf: "center", top: -15 }}>
                   <LinearGradient
                     locations={[0.0, 1.0]}
                     colors={[`${colors.grade1}`, `${colors.grade2}`]}
@@ -429,8 +434,7 @@ const styles = StyleSheet.create({
     margin: 4,
   },
   whiperText: {
-    fontFamily: "BebasNeue-Regular",
-    fontWeight: "700",
+    fontFamily: "BebasNeue",
     fontSize: 18,
     paddingTop: 3,
   },

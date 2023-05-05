@@ -1,6 +1,7 @@
 import {
   Image,
   Pressable,
+  SafeAreaView,
   ScrollView,
   StatusBar,
   StyleSheet,
@@ -403,22 +404,22 @@ const Home = () => {
   // };
 
   return (
-    <View style={{ flex: 1, backgroundColor: colors.background }}>
-      <StatusBar backgroundColor={colors.background} translucent  barStyle={"dark-content"}/>
-      <View style={{ padding: 20, alignSelf: "center", width: SIZES.width }}>
-        <HomeHeader />
-        <Weeks />
-        <Days />
-        <View style={{ marginTop: 60, alignItems: "center" }}>
-          <HomeSwiper />
+    <SafeAreaView>
+      <View style={{ backgroundColor: colors.background, marginTop: 30 }}>
+        <StatusBar backgroundColor={colors.background} translucent barStyle={"dark-content"} />
+        <View style={{ padding: 20, alignSelf: "center", width: SIZES.width }}>
+          <HomeHeader />
+          <Weeks />
+          <View style={{marginTop:30}}>
+            <Days />
+          </View>
+          <View style={{ marginTop: 60, alignItems: "center" }}>
+            <HomeSwiper />
+          </View>
+
         </View>
-        {/* <Text>Home</Text>
-        <Text>Home</Text>
-        <Text>Home</Text>
-        <Text>Home</Text>
-        <Text>Home</Text> */}
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 

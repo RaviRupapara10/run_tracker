@@ -32,6 +32,8 @@
 		03DD0EDCB62140C095F71CB8 /* RobotoCondensed-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 05ABA92BF4BB486BA63A2D18 /* RobotoCondensed-Light.ttf */; };
 		4FB0D1CA08344BF88AE7175F /* RobotoCondensed-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E0ACDC756CB440E9437623C /* RobotoCondensed-LightItalic.ttf */; };
 		D8FE93E46530494C80C9EDDA /* RobotoCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28D56AB788D2483DA17CA2B0 /* RobotoCondensed-Regular.ttf */; };
+		D553DB9D7F23441C841896CC /* BebasNeue-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C226D27F62764AAD9B8A48C7 /* BebasNeue-Regular.ttf */; };
+		1D1F649C26B2409291121F65 /* BebasNeue.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6D9C155BA9B4542A80F3C57 /* BebasNeue.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +82,8 @@
 		05ABA92BF4BB486BA63A2D18 /* RobotoCondensed-Light.ttf */ = {isa = PBXFileReference; name = "RobotoCondensed-Light.ttf"; path = "../assets/fonts/RobotoCondensed-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		4E0ACDC756CB440E9437623C /* RobotoCondensed-LightItalic.ttf */ = {isa = PBXFileReference; name = "RobotoCondensed-LightItalic.ttf"; path = "../assets/fonts/RobotoCondensed-LightItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		28D56AB788D2483DA17CA2B0 /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; name = "RobotoCondensed-Regular.ttf"; path = "../assets/fonts/RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C226D27F62764AAD9B8A48C7 /* BebasNeue-Regular.ttf */ = {isa = PBXFileReference; name = "BebasNeue-Regular.ttf"; path = "../assets/fonts/BebasNeue-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F6D9C155BA9B4542A80F3C57 /* BebasNeue.ttf */ = {isa = PBXFileReference; name = "BebasNeue.ttf"; path = "../assets/fonts/BebasNeue.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +210,8 @@
 				05ABA92BF4BB486BA63A2D18 /* RobotoCondensed-Light.ttf */,
 				4E0ACDC756CB440E9437623C /* RobotoCondensed-LightItalic.ttf */,
 				28D56AB788D2483DA17CA2B0 /* RobotoCondensed-Regular.ttf */,
+				C226D27F62764AAD9B8A48C7 /* BebasNeue-Regular.ttf */,
+				F6D9C155BA9B4542A80F3C57 /* BebasNeue.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -325,6 +331,8 @@
 				03DD0EDCB62140C095F71CB8 /* RobotoCondensed-Light.ttf in Resources */,
 				4FB0D1CA08344BF88AE7175F /* RobotoCondensed-LightItalic.ttf in Resources */,
 				D8FE93E46530494C80C9EDDA /* RobotoCondensed-Regular.ttf in Resources */,
+				D553DB9D7F23441C841896CC /* BebasNeue-Regular.ttf in Resources */,
+				1D1F649C26B2409291121F65 /* BebasNeue.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

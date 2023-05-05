@@ -22,6 +22,16 @@ export const Right = require("../assets/icons/done_mark.png")
 export const Walk = require("../assets/icons/Walk.png")
 export const Run = require("../assets/icons/RunIcon.png")
 export const CloclTotal = require("../assets/icons/ClockTotal.png")
+export const profile = require("../assets/icons/profile.png")
+export const DownArrowIcon = require("../assets/icons/DownArrow.png")
+export const reminder = require("../assets/icons/reminder.png")
+export const reset = require("../assets/icons/reset.png")
+export const step = require("../assets/icons/step.png")
+export const language = require("../assets/icons/language.png")
+export const mic = require("../assets/icons/mic.png")
+export const PremiumCrown = require("../assets/icons/PremiumCrown.png")
+export const FeedbackIcon = require("../assets/icons/FeedbackIcon.png")
+export const Privacypolicy = require("../assets/icons/Privacypolicy.png")
 
 export default {
     ligting,
@@ -33,6 +43,13 @@ export default {
     Walk,
     Run,
     CloclTotal,
+    profile,
+    step,
+    language,
+    mic,
+    PremiumCrown,
+    FeedbackIcon,
+    Privacypolicy,
     // baby_car,
     // back_arrow,
     // calendar,
