@@ -10,6 +10,9 @@ import SelectGender from './src/Screens/OnboardingScreens/SelectGender';
 import MyProfile from './src/Screens/OnboardingScreens/MyProfile';
 import SelectPlan from './src/Screens/OnboardingScreens/SelectPlan';
 import TabNavigator from './src/Screens/TabScreens/TabNavigator';
+import StartScreen from './src/Screens/TabScreens/Home/StartScreen';
+import HomeSwiper from './src/Common/Componants/HomeSwiper';
+import JogRun from './src/Screens/TabScreens/Home/JogRun';
 
 
 const Stack = createNativeStackNavigator();
@@ -80,6 +83,9 @@ function App() {
                             <Stack.Screen name="MyProfile" component={MyProfile} options={{ animationTypeForReplace: 'push', animation: 'slide_from_right' }} />
                             <Stack.Screen name="SelectPlan" component={SelectPlan} options={{ animationTypeForReplace: 'push', animation: 'slide_from_right' }} />
                             <Stack.Screen name="TabNavigator" component={TabNavigator} />
+                            <Stack.Screen name="StartScreen" component={StartScreen} />
+                            <Stack.Screen name="HomeSwiper" component={HomeSwiper} />
+                            <Stack.Screen name="JogRun" component={JogRun} />
                         </Stack.Group>
                         <Stack.Group>
 

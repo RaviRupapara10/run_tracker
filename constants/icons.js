@@ -1,5 +1,5 @@
 // export const baby_car = require("../assets/icons/baby_car_icon.png");
-// export const back_arrow = require("../assets/icons/back_arrow_icon.png");
+export const back_arrow = require("../assets/icons/back_arrow_icon.png");
 // export const calendar = require("../assets/icons/calendar_icon.png");
 // export const chart = require("../assets/icons/chart_icon.png");
 // export const cloth_icon = require("../assets/icons/cloth_icon.png");
@@ -32,6 +32,8 @@ export const mic = require("../assets/icons/mic.png")
 export const PremiumCrown = require("../assets/icons/PremiumCrown.png")
 export const FeedbackIcon = require("../assets/icons/FeedbackIcon.png")
 export const Privacypolicy = require("../assets/icons/Privacypolicy.png")
+export const Setting = require("../assets/icons/Setting.png")
+export const PlayBtnIcon = require("../assets/icons/PlayBtnIcon.png")
 
 export default {
     ligting,
@@ -51,7 +53,9 @@ export default {
     FeedbackIcon,
     Privacypolicy,
     // baby_car,
-    // back_arrow,
+    back_arrow,
+    Setting,
+    PlayBtnIcon,
     // calendar,
     // chart,
     // cloth_icon,

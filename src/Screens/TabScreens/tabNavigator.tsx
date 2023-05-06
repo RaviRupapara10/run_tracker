@@ -7,8 +7,10 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useTheme } from '../../Common/Theme/ThemeType';
 import { ChartTab, HomeTab, UserTab } from '../../../constants/icons';
 import { FONTS, SIZES } from '../../../constants';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 
 const Tab = createBottomTabNavigator();
+// const Tab = createMaterialBottomTabNavigator();
 
 const TabNavigator = () => {
 
@@ -18,7 +20,7 @@ const TabNavigator = () => {
     return (
         <Tab.Navigator screenOptions={{
             tabBarItemStyle: { height: 50 },
-            tabBarStyle: { height: 70,padding:5,borderTopLeftRadius:35,borderTopRightRadius:35   },
+            tabBarStyle: { height: 70,padding:5,borderTopLeftRadius:35,borderTopRightRadius:35 ,elevation:5 },
             tabBarLabelStyle: { ...FONTS.h4, alignSelf: 'center' },
             tabBarActiveTintColor: colors.primary,
             tabBarInactiveTintColor: colors.grayText,
