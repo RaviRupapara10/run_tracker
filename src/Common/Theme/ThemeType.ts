@@ -16,6 +16,10 @@ export type MyTheme = {
         grade2?: string;
         gray1?: string;
         cardColor?: string;
+        secondGrade1?: string;
+        secondGrade2?: string;
+        firstGrade1?: string;
+        firstGrade2?: string;
 
 
     };

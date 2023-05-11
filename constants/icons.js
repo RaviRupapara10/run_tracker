@@ -34,6 +34,9 @@ export const FeedbackIcon = require("../assets/icons/FeedbackIcon.png")
 export const Privacypolicy = require("../assets/icons/Privacypolicy.png")
 export const Setting = require("../assets/icons/Setting.png")
 export const PlayBtnIcon = require("../assets/icons/PlayBtnIcon.png")
+export const signal = require("../assets/icons/gpsNetwork.png")
+export const previousIcon = require("../assets/icons/previous.png")
+export const nextIcon = require("../assets/icons/next.png")
 
 export default {
     ligting,
@@ -56,6 +59,9 @@ export default {
     back_arrow,
     Setting,
     PlayBtnIcon,
+    signal,
+    previousIcon,
+    nextIcon,
     // calendar,
     // chart,
     // cloth_icon,

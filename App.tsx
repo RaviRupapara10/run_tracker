@@ -4,7 +4,7 @@ import * as React from 'react';
 import { View, Text, useColorScheme, StatusBar, SafeAreaView } from 'react-native';
 import { NavigationContainer, } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { SafeAreaProvider,  } from 'react-native-safe-area-context';
+import { SafeAreaProvider, } from 'react-native-safe-area-context';
 import { MyTheme } from './src/Common/Theme/ThemeType';
 import SelectGender from './src/Screens/OnboardingScreens/SelectGender';
 import MyProfile from './src/Screens/OnboardingScreens/MyProfile';
@@ -34,7 +34,10 @@ const MyLightTheme: MyTheme = {
         grade2: '#FE7234',
         gray1: '#F8F8F8',
         cardColor: '#1C1C1E',
-
+        firstGrade1: 'rgba(255, 147, 21, 1)',
+        firstGrade2: 'rgba(255, 196, 116, 1)',
+        secondGrade1: 'rgba(138, 46, 255, 1)',
+        secondGrade2: 'rgba(171, 137, 255, 1)',
     },
 };
 
@@ -55,6 +58,8 @@ const MyDarkTheme: MyTheme = {
         grade2: '#FE7234',
         gray1: '#F8F8F8',
         cardColor: '#1C1C1E',
+        secondGrade1: 'rgba(138, 46, 255, 1)',
+        secondGrade2: 'rgba(171, 137, 255, 1)',
 
 
 
@@ -73,10 +78,10 @@ function App() {
 
     return (
         <>
-            <SafeAreaView style={{flex:1}}  >
+            <SafeAreaView style={{ flex: 1 }}  >
                 <StatusBar backgroundColor={'transparent'} translucent />
                 <NavigationContainer
-                    theme={(scheme === 'dark' ? MyDarkTheme : MyLightTheme) as any} >
+                    theme={(scheme === 'dark' ? MyLightTheme : MyLightTheme) as any} >
                     <Stack.Navigator initialRouteName='TabNavigator' >
                         <Stack.Group screenOptions={{ headerShown: false }} >
                             <Stack.Screen name="SelectGender" component={SelectGender} />

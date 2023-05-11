@@ -167,7 +167,6 @@ const StartScreen = () => {
       </View>
       <View style={{ margin: 20 }}>
         <WalkCard />
-
         <RunCard />
       </View>
       <Pressable
@@ -175,7 +174,6 @@ const StartScreen = () => {
         style={{ marginTop: 80 }}>
         <PlayBtn />
       </Pressable>
-
     </SafeAreaView >
     </>
   )

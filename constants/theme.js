@@ -45,6 +45,7 @@ export const FONTS = {
     Bebas2: { fontFamily: 'BebasNeue', fontSize: SIZES.h2, },
     Bebas3: { fontFamily: 'BebasNeue', fontSize: SIZES.h3, },
     Bebas4: { fontFamily: 'BebasNeue', fontSize: SIZES.h4, },
+    Bebas: { fontFamily: 'BebasNeue',  },
 };
 
 const appTheme = {

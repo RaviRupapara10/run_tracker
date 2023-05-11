@@ -5,6 +5,7 @@ import AnimatedLottieView from 'lottie-react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { useTheme } from '../../../Common/Theme/ThemeType';
 import { SIZES } from '../../../../constants';
+import Tracking from '../../../Common/Componants/Tracking';
 
 const JogRun = () => {
   const { colors } = useTheme();
@@ -55,12 +56,14 @@ const JogRun = () => {
   }
   return (
     <View style={{ flex: 1 }}>
-      {SowAnimation ? <CountDownAnimation /> : <View>
-        <SafeAreaView>
-
-        </SafeAreaView>
-      </View>}
-      {/* <Text>JogRun</Text> */}
+      {SowAnimation ? <CountDownAnimation />
+        :
+        <>
+          <View style={{ height: '100%', width: SIZES.width, flex: 1 }}>
+          <StatusBar translucent backgroundColor={'rgba(0,0,0,0)'} barStyle={'light-content'} />
+            <Tracking />
+          </View>
+        </>}
 
     </View>
   )
