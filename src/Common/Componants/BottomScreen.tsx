@@ -1,6 +1,6 @@
 import BottomSheet, { BottomSheetBackdrop } from '@gorhom/bottom-sheet';
 import React, { useCallback, useMemo, useRef } from 'react';
-import { View, Text, StyleSheet, Pressable, StatusBar } from 'react-native';
+import { View, Text, StyleSheet, } from 'react-native';
 
 const BottomScreen = (props: any) => {
   // ref
@@ -46,7 +46,7 @@ const BottomScreen = (props: any) => {
 
 
       <BottomSheet
-        ref={bottomSheetRef}
+         ref={bottomSheetRef}
         index={0}
         snapPoints={snapPoints}
         onChange={handleSheetChanges}
@@ -58,10 +58,9 @@ const BottomScreen = (props: any) => {
       >
 
         <View style={styles.contentContainer}>
-          <Text>Awesome 🎉</Text>
           {props.children}
         </View>
-      </BottomSheet>
+      </BottomSheet >
     </View>
   );
 };

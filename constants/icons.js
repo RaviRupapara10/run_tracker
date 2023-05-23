@@ -37,8 +37,14 @@ export const PlayBtnIcon = require("../assets/icons/PlayBtnIcon.png")
 export const signal = require("../assets/icons/gpsNetwork.png")
 export const previousIcon = require("../assets/icons/previous.png")
 export const nextIcon = require("../assets/icons/next.png")
+export const pouse = require("../assets/icons/pouse.png")
+export const location = require("../assets/icons/location.png")
+export const lockIcon = require("../assets/icons/lockIcon.png")
 
 export default {
+    pouse,
+    location,
+    lockIcon,
     ligting,
     HomeTab,
     ChartTab,
