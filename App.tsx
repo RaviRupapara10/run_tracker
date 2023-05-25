@@ -9,13 +9,14 @@ import { MyTheme } from './src/Common/Theme/ThemeType';
 import SelectGender from './src/Screens/OnboardingScreens/SelectGender';
 import MyProfile from './src/Screens/OnboardingScreens/MyProfile';
 import SelectPlan from './src/Screens/OnboardingScreens/SelectPlan';
-import TabNavigator from './src/Screens/TabScreens/TabNavigator';
 import StartScreen from './src/Screens/TabScreens/Home/StartScreen';
 import HomeSwiper from './src/Common/Componants/HomeSwiper';
 import JogRun from './src/Screens/TabScreens/Home/JogRun';
 import Tracking from './src/Common/Componants/Tracking';
 import QuitScreen from './src/Screens/TabScreens/Home/QuitScreen';
-import CompletedWorkout from './src/Screens/TabScreens/Home/CompletedWorkout';
+import TabNavigator from './src/Screens/TabScreens/TabNavigator';
+import ComplitedWorkout from './src/Screens/TabScreens/Home/ComplitedWorkout';
+
 
 
 const Stack = createNativeStackNavigator();
@@ -85,7 +86,7 @@ function App() {
                 <StatusBar backgroundColor={'transparent'} translucent />
                 <NavigationContainer
                     theme={(scheme === 'dark' ? MyLightTheme : MyLightTheme) as any} >
-                    <Stack.Navigator initialRouteName='CompletedWorkout' >
+                    <Stack.Navigator initialRouteName='ComplitedWorkout' >
                         <Stack.Group screenOptions={{ headerShown: false }} >
                             <Stack.Screen name="SelectGender" component={SelectGender} />
                             <Stack.Screen name="MyProfile" component={MyProfile} options={{ animationTypeForReplace: 'push', animation: 'slide_from_right' }} />
@@ -96,7 +97,7 @@ function App() {
                             <Stack.Screen name="JogRun" component={JogRun} />
                             <Stack.Screen name="Tracking" component={Tracking} />
                             <Stack.Screen name="QuitScreen" component={QuitScreen } />
-                            <Stack.Screen name="CompletedWorkout" component={CompletedWorkout} />
+                            <Stack.Screen name="ComplitedWorkout" component={ComplitedWorkout} />
                         </Stack.Group>
                         <Stack.Group>
 
