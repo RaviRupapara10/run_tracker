@@ -16,7 +16,8 @@ import Tracking from './src/Common/Componants/Tracking';
 import QuitScreen from './src/Screens/TabScreens/Home/QuitScreen';
 import TabNavigator from './src/Screens/TabScreens/TabNavigator';
 import ComplitedWorkout from './src/Screens/TabScreens/Home/ComplitedWorkout';
-
+import {enableLatestRenderer} from 'react-native-maps';
+enableLatestRenderer();
 
 
 const Stack = createNativeStackNavigator();
