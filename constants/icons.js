@@ -39,7 +39,8 @@ export const previousIcon = require("../assets/icons/previous.png")
 export const nextIcon = require("../assets/icons/next.png")
 export const pouse = require("../assets/icons/pouse.png")
 export const location = require("../assets/icons/location.png")
-export const lockIcon = require("../assets/icons/lockIcon.png")
+export const lockIcon = require("../assets/icons/lockIcon.png") 
+export const pencil = require("../assets/icons/pencil.png") 
 
 export default {
     pouse,
@@ -68,6 +69,8 @@ export default {
     signal,
     previousIcon,
     nextIcon,
+    pencil,
+    lockIcon,
     // calendar,
     // chart,
     // cloth_icon,
