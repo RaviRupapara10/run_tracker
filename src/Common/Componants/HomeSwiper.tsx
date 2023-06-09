@@ -184,7 +184,7 @@ const HomeSwiper = () => {
                       >
                         <Image
                           source={Run}
-                          style={{ height: 20, width: 15, tintColor: "while" }}
+                          style={{ height: 20, width: 15, tintColor: "while",resizeMode:'contain' }}
                         />
                       </LinearGradient>
                       <Text style={[styles.whiperText, { color: colors.cardColor }]}>
@@ -206,7 +206,7 @@ const HomeSwiper = () => {
                       >
                         <Image
                           source={Walk}
-                          style={{ height: 20, width: 10, tintColor: "while" }}
+                          style={{ height: 20, width: 10, tintColor: "while" ,resizeMode:'contain' }}
                         />
                       </LinearGradient>
                       <Text style={[styles.whiperText, { color: colors.cardColor }]}>
@@ -227,7 +227,7 @@ const HomeSwiper = () => {
                       >
                         <Image
                           source={CloclTotal}
-                          style={{ height: 20, width: 18, tintColor: "while" }}
+                          style={{ height: 20, width: 18, tintColor: "while",resizeMode:'contain'  }}
                         />
                       </View>
                       <Text style={[styles.whiperText, { color: colors.cardColor }]}>

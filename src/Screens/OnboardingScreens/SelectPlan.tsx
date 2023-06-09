@@ -176,7 +176,7 @@ const SelectPlan = (props: any) => {
     function nextstexpButton() {
         return (
             <TouchableWithoutFeedback
-                onPress={() => props.navigation.navigate('SelectPlan')}
+                onPress={() => props.navigation.navigate('TabNavigator')}
             >
                 <LinearGradient
 

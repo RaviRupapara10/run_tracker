@@ -87,7 +87,7 @@ function App() {
                 <StatusBar backgroundColor={'transparent'} translucent />
                 <NavigationContainer
                     theme={(scheme === 'dark' ? MyLightTheme : MyLightTheme) as any} >
-                    <Stack.Navigator initialRouteName='ComplitedWorkout' >
+                    <Stack.Navigator initialRouteName='SelectGender' >
                         <Stack.Group screenOptions={{ headerShown: false }} >
                             <Stack.Screen name="SelectGender" component={SelectGender} />
                             <Stack.Screen name="MyProfile" component={MyProfile} options={{ animationTypeForReplace: 'push', animation: 'slide_from_right' }} />
