@@ -16,7 +16,9 @@ import Tracking from './src/Common/Componants/Tracking';
 import QuitScreen from './src/Screens/TabScreens/Home/QuitScreen';
 import TabNavigator from './src/Screens/TabScreens/TabNavigator';
 import ComplitedWorkout from './src/Screens/TabScreens/Home/ComplitedWorkout';
-import {enableLatestRenderer} from 'react-native-maps';
+import { enableLatestRenderer } from 'react-native-maps';
+import { getDBConnection } from './src/Common/DataBase/db-service';
+import { useEffect } from 'react';
 enableLatestRenderer();
 
 
@@ -79,8 +81,26 @@ function App() {
 
     const scheme = useColorScheme();
     // console.log(scheme);
+    useEffect(() => {
+        getData();
+    }, [])
 
+    const getData = async () => {
+        try {
+            const conn = await getDBConnection();
+            // const [ass] = await conn.executeSql('Create table xyz (a int);');
+            // const [as] = await conn.executeSql('SELECT * FROM sqlite_master where type=\'table\';');
+            // console.log('DB Data', as.rows.raw());
+            // console.log('DB Data Connection',);
+            const [data] = await conn.executeSql('SELECT * FROM \'WeeklyData\' LIMIT 0,30;');
+            console.log('DB Data', data.rows.raw());
+        } catch (e) {
+            console.log('eee', e);
 
+        }
+        // await conn.executeSql('CREATE TABLE abc (x int)');
+
+    }
     return (
         <>
             <SafeAreaView style={{ flex: 1 }}  >
@@ -97,7 +117,7 @@ function App() {
                             <Stack.Screen name="HomeSwiper" component={HomeSwiper} />
                             <Stack.Screen name="JogRun" component={JogRun} />
                             <Stack.Screen name="Tracking" component={Tracking} />
-                            <Stack.Screen name="QuitScreen" component={QuitScreen } />
+                            <Stack.Screen name="QuitScreen" component={QuitScreen} />
                             <Stack.Screen name="ComplitedWorkout" component={ComplitedWorkout} />
                         </Stack.Group>
                         <Stack.Group>
