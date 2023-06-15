@@ -19,6 +19,7 @@ import ComplitedWorkout from './src/Screens/TabScreens/Home/ComplitedWorkout';
 import { enableLatestRenderer } from 'react-native-maps';
 import { getDBConnection } from './src/Common/DataBase/db-service';
 import { useEffect } from 'react';
+import Home from './src/Screens/TabScreens/Home';
 enableLatestRenderer();
 
 
@@ -81,39 +82,34 @@ function App() {
 
     const scheme = useColorScheme();
     // console.log(scheme);
-    useEffect(() => {
-        getData();
-    }, [])
+    // useEffect(() => {
+    //     getData();
+    // }, [])
 
-    const getData = async () => {
-        try {
-            const conn = await getDBConnection();
-            // const [ass] = await conn.executeSql('Create table xyz (a int);');
-            // const [as] = await conn.executeSql('SELECT * FROM sqlite_master where type=\'table\';');
-            // console.log('DB Data', as.rows.raw());
-            // console.log('DB Data Connection',);
-            const [data] = await conn.executeSql('SELECT * FROM \'WeeklyData\' LIMIT 0,30;');
-            console.log('DB Data', data.rows.raw());
-        } catch (e) {
-            console.log('eee', e);
+    // const getData = async () => {
+    //     try {
+    //         const conn = await getDBConnection();
+    //         const [data] = await conn.executeSql('SELECT * FROM \'WeeklyData\' LIMIT 0,30;');
+    //         console.log('DB Data', data.rows.raw());
+    //     } catch (e) {
+    //         console.log('eee', e);
 
-        }
-        // await conn.executeSql('CREATE TABLE abc (x int)');
-
-    }
+    //     }
+    // }
     return (
         <>
             <SafeAreaView style={{ flex: 1 }}  >
                 <StatusBar backgroundColor={'transparent'} translucent />
                 <NavigationContainer
                     theme={(scheme === 'dark' ? MyLightTheme : MyLightTheme) as any} >
-                    <Stack.Navigator initialRouteName='SelectGender' >
+                    <Stack.Navigator initialRouteName='Home' >
                         <Stack.Group screenOptions={{ headerShown: false }} >
                             <Stack.Screen name="SelectGender" component={SelectGender} />
                             <Stack.Screen name="MyProfile" component={MyProfile} options={{ animationTypeForReplace: 'push', animation: 'slide_from_right' }} />
                             <Stack.Screen name="SelectPlan" component={SelectPlan} options={{ animationTypeForReplace: 'push', animation: 'slide_from_right' }} />
                             <Stack.Screen name="TabNavigator" component={TabNavigator} />
                             <Stack.Screen name="StartScreen" component={StartScreen} />
+                            <Stack.Screen name="Home" component={Home} />
                             <Stack.Screen name="HomeSwiper" component={HomeSwiper} />
                             <Stack.Screen name="JogRun" component={JogRun} />
                             <Stack.Screen name="Tracking" component={Tracking} />

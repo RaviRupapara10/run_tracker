@@ -8,7 +8,7 @@ import {
   Text,
   View,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FONTS, SIZES } from "../../../constants";
 import { useTheme } from "../../Common/Theme/ThemeType";
 import {
@@ -20,8 +20,32 @@ import LinearGradient from "react-native-linear-gradient";
 import "../../Common/Class/model";
 import { Days } from "../../Common/Class/model";
 import HomeSwiper from "../../Common/Componants/HomeSwiper";
+import { getDBConnection } from "../../Common/DataBase/db-service";
+import { UserType } from "../../Common/userModel";
+
 
 const Home = () => {
+
+
+  useEffect(() => {
+    getData();
+  }, [])
+
+  const [userData, setUserData] = useState<UserType[]>([]);
+
+  const getData = async () => {
+    try {
+      const conn = await getDBConnection();
+      const [data] = await conn.executeSql('SELECT * FROM \'WeeklyData\' LIMIT 0,30;');
+      // const userData: UserType[] = 
+      setUserData(data.rows.raw() as UserType[])
+      // console.log('DB Data', userData);
+    } catch (e) {
+      console.log('eee', e);
+
+    }
+  }
+
   const { colors } = useTheme();
 
   const variable: Days[] = [
@@ -57,27 +81,53 @@ const Home = () => {
     );
   };
 
-  const Weeks = () => {
+  const Weeks = ({ data }: { data: UserType[] }) => {
+
+    type weekData = {
+      'isWeekComplete': number,
+      "weekName": number,
+    }
+
+    useEffect(() => {
+      getWeekData();
+    }, [])
+
+    const [weekData, setWeeData] = useState([])
+
+    console.log(weekData);
+    const getWeekData = async () => {
+      try {
+        const conn = await getDBConnection();
+        const [data] = await conn.executeSql('SELECT isWeekComplete,weekName FROM \'WeeklyData\' group by isWeekComplete,weekName;');
+        setWeeData(data.rows.raw() as [])
+      } catch (e) {
+        console.log('eee', e);
+      }
+    }
+
     return (
       <View style={{ paddingVertical: 5 }}>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          <Pressable>
-            <LinearGradient
-              locations={[0.0, 1.0]}
-              colors={[`${colors.grade1}`, `${colors.grade2}`]}
-              style={[styles.weeks, { backgroundColor: colors.background }]}
-            >
-              <Text
-                style={{
-                  ...FONTS.HomeCard,
-                  color: colors.white,
-                }}
+          {weekData.map((a: any, i) =>
+            <Pressable key={i}>
+              <LinearGradient
+                locations={[0.0, 1.0]}
+                colors={a.isWeekComplete ? [`${colors.grade1}`, `${colors.grade2}`] : ['white', 'white']}
+                style={[styles.weeks, { backgroundColor: colors.background, borderWidth: 2, borderColor: 'red' }]}
               >
-                Week 1
-              </Text>
-            </LinearGradient>
-          </Pressable>
-          <Pressable>
+                <Text
+                  style={{
+                    ...FONTS.HomeCard,
+                    color: colors.darkbackground,
+                  }}
+                >
+                  Week {a.weekName}
+                </Text>
+              </LinearGradient>
+            </Pressable>
+          )}
+
+          {/* <Pressable>
             <LinearGradient
               locations={[0.0, 1.0]}
               colors={[`${colors.grade1}`, `${colors.grade2}`]}
@@ -125,7 +175,7 @@ const Home = () => {
                 Week 4
               </Text>
             </LinearGradient>
-          </Pressable>
+          </Pressable> */}
         </ScrollView>
       </View>
     );
@@ -258,7 +308,7 @@ const Home = () => {
   };
   35;
 
-  // const DaySwiper = () => {
+
   //   return (
   //     <View>
   //       <View
@@ -409,8 +459,8 @@ const Home = () => {
         <StatusBar backgroundColor={colors.background} translucent barStyle={"dark-content"} />
         <View style={{ padding: 20, alignSelf: "center", width: SIZES.width }}>
           <HomeHeader />
-          <Weeks />
-          <View style={{marginTop:30}}>
+          <Weeks data={userData} />
+          <View style={{ marginTop: 30 }}>
             <Days />
           </View>
           <View style={{ marginTop: 60, alignItems: "center" }}>
