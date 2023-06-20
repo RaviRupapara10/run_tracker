@@ -1,17 +1,20 @@
-import { Animated, Dimensions, FlatList, Image, Platform, Pressable, StyleSheet, Text, View } from 'react-native'
-import React, { useCallback, useRef, useState } from 'react'
+import { Animated, Dimensions, FlatList, Image, NativeSyntheticEvent, Platform, Pressable, ScrollViewComponent, StyleSheet, Text, View } from 'react-native'
+import React, { LegacyRef, useCallback, useEffect, useRef, useState } from 'react'
 import { useTheme } from "../../Common/Theme/ThemeType";
 // import LinearGradient from 'react-native-linear-gradient';
 import { CloclTotal, Run, Walk } from '../../../constants/icons';
 import { FONTS, SIZES } from '../../../constants';
 import LinearGradient from 'react-native-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
+import { UserType } from '../userModel';
 
 
 const { width, height } = Dimensions.get('window');
 
 
-const HomeSwiper = () => {
+const HomeSwiper = ({ data, selectedDay }: { data: UserType[], selectedDay: number }) => {
+  console.log('-----------------', data);
+
   const navigation = useNavigation()
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const { colors } = useTheme();
@@ -20,68 +23,25 @@ const HomeSwiper = () => {
   const EMPTY_ITEM_SIZE = (width - ITEM_SIZE) / 2;
   const BACKDROP_HEIGHT = height * 0.65;
 
-  const Data = [
-    {
-      week: 1,
-      Day: 1,
-      walkTime: '14:00',
-      RunTime: '14:00',
-      TotalTime: '14:00',
-      isCompleted: false,
-    },
-    {
-      week: 1,
-      Day: 1,
-      walkTime: '14:00',
-      RunTime: '14:00',
-      TotalTime: '14:00',
-      isCompleted: false,
-    },
-    {
-      week: 1,
-      Day: 1,
-      walkTime: '14:00',
-      RunTime: '14:00',
-      TotalTime: '14:00',
-      isCompleted: false,
-    },
-    {
-      week: 1,
-      Day: 1,
-      walkTime: '14:00',
-      RunTime: '14:00',
-      TotalTime: '14:00',
-      isCompleted: false,
-    },
-    {
-      week: 1,
-      Day: 1,
-      walkTime: '14:00',
-      RunTime: '14:00',
-      TotalTime: '14:00',
-      isCompleted: false,
-    },
-    {
-      week: 1,
-      Day: 1,
-      walkTime: '14:00',
-      RunTime: '14:00',
-      TotalTime: '14:00',
-      isCompleted: false,
-    },
-    {
-      week: 1,
-      Day: 1,
-      walkTime: '14:00',
-      RunTime: '14:00',
-      TotalTime: '14:00',
-      isCompleted: false,
-    },
-  ]
 
 
+  const animatedFlatListRef = useRef<any>();
 
   const scrollX = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    animatedFlatListRef?.current?.getNativeScrollRef()?.scrollTo?.({ x: (ITEM_SIZE * (selectedDay - 1)) - (width * 0.12), animated: true })
+    animatedFlatListRef?.current?.forceUpdate();
+  }, [selectedDay]);
+
+  const onViewableItemsChanged = (e: NativeSyntheticEvent<any>) => {
+    const currentIndex = Math.ceil(e.nativeEvent.contentOffset.x / ITEM_SIZE);
+    console.log(currentIndex)
+    if (currentIndex != activeIndex) {
+      setActiveIndex(currentIndex);
+      console.log(currentIndex);
+    }
+  }
 
 
   return (
@@ -89,7 +49,8 @@ const HomeSwiper = () => {
     }}>
 
       <Animated.FlatList
-        data={Data}
+        data={data}
+        ref={animatedFlatListRef}
         horizontal
         pagingEnabled
         snapToInterval={ITEM_SIZE}
@@ -99,7 +60,10 @@ const HomeSwiper = () => {
         scrollEventThrottle={16}
         onScroll={Animated.event(
           [{ nativeEvent: { contentOffset: { x: scrollX } } }],
-          { useNativeDriver: true }
+          {
+            useNativeDriver: true,
+            listener: onViewableItemsChanged
+          }
         )}
         renderItem={({ item, index }) => {
 
@@ -125,7 +89,6 @@ const HomeSwiper = () => {
             <View style={{
               width: ITEM_SIZE,
               height: 400,
-              //  backgroundColor: 'red',
               justifyContent: 'center'
             }} >
               <Animated.View style={{
@@ -160,7 +123,7 @@ const HomeSwiper = () => {
 
                       }}
                     >
-                      DAY 1
+                      Day {item.dayName}
                     </Text>
                   </View>
                   <View
@@ -184,11 +147,11 @@ const HomeSwiper = () => {
                       >
                         <Image
                           source={Run}
-                          style={{ height: 20, width: 15, tintColor: "while",resizeMode:'contain' }}
+                          style={{ height: 20, width: 15, tintColor: "while", resizeMode: 'contain' }}
                         />
                       </LinearGradient>
                       <Text style={[styles.whiperText, { color: colors.cardColor }]}>
-                        14:00
+                        {item.walkTime}:00
                       </Text>
                       <Text style={{ ...FONTS.body4 }}>walk</Text>
                     </View>
@@ -206,11 +169,11 @@ const HomeSwiper = () => {
                       >
                         <Image
                           source={Walk}
-                          style={{ height: 20, width: 10, tintColor: "while" ,resizeMode:'contain' }}
+                          style={{ height: 20, width: 10, tintColor: "while", resizeMode: 'contain' }}
                         />
                       </LinearGradient>
                       <Text style={[styles.whiperText, { color: colors.cardColor }]}>
-                        14:00
+                        {item.runTime}:00
                       </Text>
                       <Text style={{ ...FONTS.body4 }}>Run</Text>
                     </View>
@@ -227,11 +190,11 @@ const HomeSwiper = () => {
                       >
                         <Image
                           source={CloclTotal}
-                          style={{ height: 20, width: 18, tintColor: "while",resizeMode:'contain'  }}
+                          style={{ height: 20, width: 18, tintColor: "while", resizeMode: 'contain' }}
                         />
                       </View>
                       <Text style={[styles.whiperText, { color: colors.cardColor }]}>
-                        14:00
+                        {item.totalTime}:00
                       </Text>
                       <Text style={{ ...FONTS.body4 }}>Total</Text>
                     </View>
@@ -271,7 +234,7 @@ const HomeSwiper = () => {
                     }}
                   >
                     <Text style={{ color: colors.background, ...FONTS.h2 }}>
-                      WEEK 2
+                      WEEK {item.weekName}
                     </Text>
                   </LinearGradient>
                 </View>
