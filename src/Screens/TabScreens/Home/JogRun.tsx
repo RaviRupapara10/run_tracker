@@ -6,9 +6,14 @@ import LinearGradient from 'react-native-linear-gradient';
 import { useTheme } from '../../../Common/Theme/ThemeType';
 import { SIZES } from '../../../../constants';
 import Tracking from '../../../Common/Componants/Tracking';
+import { useRoute } from '@react-navigation/native';
 
 const JogRun = () => {
   const { colors } = useTheme();
+
+  const route = useRoute()
+  const userData = route.params
+  console.log(userData);
 
   const animation = useRef(null);
 
@@ -60,8 +65,8 @@ const JogRun = () => {
         :
         <>
           <View style={{ height: '100%', width: SIZES.width, flex: 1 }}>
-          <StatusBar translucent backgroundColor={'rgba(0,0,0,0)'} barStyle={'light-content'} />
-            <Tracking />
+            <StatusBar translucent backgroundColor={'rgba(0,0,0,0)'} barStyle={'light-content'} />
+            <Tracking data={userData} />
           </View>
         </>}
 

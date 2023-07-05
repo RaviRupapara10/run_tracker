@@ -8,14 +8,20 @@ import { FONTS, SIZES } from '../../../constants'
 import { CircularProgressBase } from 'react-native-circular-progress-indicator'
 import { FAB } from '@rneui/base'
 
-const Tracking = () => {
+const Tracking = (props: any) => {
    const { colors } = useTheme();
-   const [exercise, setExercise] = useState(Array.from(new Array(10).keys()));
    const [selectedIndex, setSelectedIndex] = useState(0);
+   
 
+   const runTime = props.data.runTime
+   const walkTime = props.data.walkTime
+   const totalminuts = runTime + walkTime
+   const [exercise, setExercise] = useState(Array.from(new Array(totalminuts).keys()));
    const isWalk = selectedIndex % 2 == 0;
    const exerciseLenght = exercise.length;
 
+
+   
 
 
 

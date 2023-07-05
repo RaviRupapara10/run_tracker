@@ -36,10 +36,10 @@ const HomeSwiper = ({ data, selectedDay }: { data: UserType[], selectedDay: numb
 
   const onViewableItemsChanged = (e: NativeSyntheticEvent<any>) => {
     const currentIndex = Math.ceil(e.nativeEvent.contentOffset.x / ITEM_SIZE);
-    console.log(currentIndex)
+    // console.log(currentIndex)
     if (currentIndex != activeIndex) {
       setActiveIndex(currentIndex);
-      console.log(currentIndex);
+      // console.log(currentIndex);
     }
   }
 
@@ -200,7 +200,7 @@ const HomeSwiper = ({ data, selectedDay }: { data: UserType[], selectedDay: numb
                     </View>
                   </View>
                   <Pressable
-                    onPress={() => navigation.navigate('StartScreen' as never)}
+                    onPress={() => (navigation.navigate as any)('StartScreen', { walkTime: item.walkTime, runTime: item.runTime, weekName:item.weekName,dayName:item.dayName})}
                     style={{ alignSelf: "center", margin: 20, marginTop: 50 }}>
                     <LinearGradient
                       locations={[0.0, 1.0]}

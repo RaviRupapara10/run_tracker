@@ -20,6 +20,9 @@ import { enableLatestRenderer } from 'react-native-maps';
 import { getDBConnection } from './src/Common/DataBase/db-service';
 import { useEffect } from 'react';
 import Home from './src/Screens/TabScreens/Home';
+import { TestScreen } from './src/Screens/TestScreen';
+import OnboardingScreen from './src/DemoProject/DemoScreen';
+import DemoScreen from './src/DemoProject/DemoScreen';
 enableLatestRenderer();
 
 
@@ -110,11 +113,13 @@ function App() {
                             <Stack.Screen name="TabNavigator" component={TabNavigator} />
                             <Stack.Screen name="StartScreen" component={StartScreen} />
                             <Stack.Screen name="Home" component={Home} />
-                            <Stack.Screen name="HomeSwiper" component={HomeSwiper} />
+                            {/* <Stack.Screen name="HomeSwiper" component={HomeSwiper} /> */}
                             <Stack.Screen name="JogRun" component={JogRun} />
                             <Stack.Screen name="Tracking" component={Tracking} />
                             <Stack.Screen name="QuitScreen" component={QuitScreen} />
                             <Stack.Screen name="ComplitedWorkout" component={ComplitedWorkout} />
+                            <Stack.Screen name="DemoScreen" component={DemoScreen} />
+                            {/* <Stack.Screen name="TestScreen" component={TestScreen} /> */}
                         </Stack.Group>
                         <Stack.Group>
 

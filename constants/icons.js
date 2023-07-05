@@ -41,8 +41,13 @@ export const pouse = require("../assets/icons/pouse.png")
 export const location = require("../assets/icons/location.png")
 export const lockIcon = require("../assets/icons/lockIcon.png") 
 export const pencil = require("../assets/icons/pencil.png") 
+export const backDemo = require("../assets/icons/BackDemoicon.png") 
+export const searchDemo = require("../assets/icons/search-rounded.png") 
+export const DownArrowDemo = require("../assets/icons/down_arrow.png") 
 
 export default {
+    searchDemo,
+    backDemo,
     pouse,
     location,
     lockIcon,
@@ -71,6 +76,7 @@ export default {
     nextIcon,
     pencil,
     lockIcon,
+    DownArrowDemo,
     // calendar,
     // chart,
     // cloth_icon,

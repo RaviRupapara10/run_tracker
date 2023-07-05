@@ -8,12 +8,25 @@ import MyBtn from '../../../Common/MyBtn';
 import { FONTS, SIZES } from '../../../../constants';
 import { Image } from '@rneui/base';
 import LinearGradient from 'react-native-linear-gradient';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 const StartScreen = () => {
   const { colors } = useTheme();
 
   const navigation = useNavigation()
+  const route = useRoute()
+
+
+
+  type UserData = {
+    'dayName': number;
+    'runTime': number;
+    'walkTime': number;
+    'weekName': number;
+
+  }
+  const data: UserData = route.params as UserData
+  // console.log(data);
 
   const styles = StyleSheet.create({
     CardContainer: {
@@ -76,14 +89,16 @@ const StartScreen = () => {
     return (
       <>
         <View style={styles.header}>
-          <View style={{ padding: 20, alignItems: 'center' }}>
+          <Pressable
+            onPress={() => { navigation.goBack() }}
+            style={{ padding: 20, alignItems: 'center' }}>
             <Avatar
               size={16}
               source={back_arrow}
               containerStyle={{}}
             />
-          </View>
-          <Text style={{ flex: 1, ...FONTS.h3, color: colors.darkbackground }}>Week 1 - Day 2</Text>
+          </Pressable>
+          <Text style={{ flex: 1, ...FONTS.h3, color: colors.darkbackground }}>Week {data.weekName} - Day {data.dayName}</Text>
           <Pressable style={{ marginRight: 20, alignItems: 'center' }}>
             <MyBtn source={Setting} />
           </Pressable>
@@ -103,7 +118,8 @@ const StartScreen = () => {
             </View>
             <Text style={styles.cardText}>Walk</Text>
             <View style={styles.timeBtn}>
-              <Text style={styles.timeText}>14:00</Text>
+              <Text style={styles.timeText}>
+                {data.walkTime}:00</Text>
             </View>
           </View>
         </View>
@@ -121,7 +137,7 @@ const StartScreen = () => {
             </View>
             <Text style={styles.cardText}>Run</Text>
             <View style={styles.timeBtn}>
-              <Text style={styles.timeText}>08:00</Text>
+              <Text style={styles.timeText}>{data.runTime}:00</Text>
             </View>
           </View>
         </View>
@@ -161,20 +177,20 @@ const StartScreen = () => {
 
   return (
     <>
-    <SafeAreaView style={{ width: SIZES.width }}>
-      <View style={{ marginTop: 20, }}>
-        <Header />
-      </View>
-      <View style={{ margin: 20 }}>
-        <WalkCard />
-        <RunCard />
-      </View>
-      <Pressable
-        onPress={() => navigation.navigate('JogRun' as never)}
-        style={{ marginTop: 80 }}>
-        <PlayBtn />
-      </Pressable>
-    </SafeAreaView >
+      <SafeAreaView style={{ width: SIZES.width }}>
+        <View style={{ marginTop: 20, }}>
+          <Header />
+        </View>
+        <View style={{ margin: 20 }}>
+          <WalkCard />
+          <RunCard />
+        </View>
+        <Pressable
+          onPress={() => (navigation.navigate as any)('JogRun' as never, { runTime: data.runTime, walkTime: data.walkTime })}
+          style={{ marginTop: 80 }}>
+          <PlayBtn />
+        </Pressable>
+      </SafeAreaView >
     </>
   )
 }

@@ -41,7 +41,7 @@ const Home = () => {
   // const [userData, setUserData] = useState<UserType[]>([]);
   const [selectedWeek, setSelectedWeek] = useState(1)
   const [selectedDays, setSelectedDays] = useState(1)
-  console.log(selectedWeek);
+  // console.log(selectedWeek);
 
 
   // const getData = async () => {
